@@ -54,7 +54,7 @@ while True:
         ini_ano = int(input('Ano: '))
         data_ini = f'{ini_ano}-{ini_mes}-{ini_dia}'
         print('Agora digite o dia, mês e ano da data final: ')
-        fim_dia = int(input('Dia: ')) + 1 # Aparentemente, se eu colocar 16 no dia, ele vai mostrar o até o dia 15, por isso estou colocando +1, gambiarra.
+        fim_dia = int(input('Dia: ')) + 1
         fim_mes = int(input('Mês: '))
         fim_ano = int(input('Ano: '))
         data_fim = f'{fim_ano}-{fim_mes}-{fim_dia}'
