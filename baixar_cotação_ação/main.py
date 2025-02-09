@@ -1,15 +1,18 @@
 from IPython.display import display
+import matplotlib.pyplot as plt
 import yfinance as yf
 import pandas as pd
 import numpy as np
 from datetime import date, datetime
 
 lista_acoes = ['AAPL']
+select = []
 
 while True:
     acao_i = input('Digite o Ticker da Ação que você quer: ').upper()
     if acao_i in lista_acoes:
         print('Vamos pegar as cotações dessa ação agora.')
+        select.append(acao_i)
         break
     else:
         print('Você digitou uma ação que não está na lista, por favor, digite de novo.')
@@ -64,3 +67,9 @@ while True:
         break
     else:
         print('Você digitou um tempo que não está na lista, por favor digite novamente.')
+
+acao_i_hist["Adj Close"].plot(figsize=(22,8))
+plt.show()
+
+data = pd.DataFrame(acao_i_hist)
+data.to_excel("output.xlsx")
