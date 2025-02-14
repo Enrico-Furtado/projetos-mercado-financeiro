@@ -32,22 +32,30 @@ while True:
     tempo = int(input('Digite o número de anos que você quer:'))
     if tempo == 1:
         print('Aqui estão as todas as cotações diárias em 1 ano.')
-        acao_i_hist = yf.download(acao_i, data_1, date.today())
+        data_ini = data_1
+        data_fim = date.today()
+        acao_i_hist = yf.download(acao_i, data_ini, data_fim)
         display(acao_i_hist)
         break
     elif tempo == 3:
         print('Aqui estão as todas as cotações diárias em 3 anos.')
-        acao_i_hist = yf.download(acao_i, data_3, date.today())
+        data_ini = data_3
+        data_fim = date.today()
+        acao_i_hist = yf.download(acao_i, data_ini, data_fim)
         display(acao_i_hist)
         break
     elif tempo == 5:
         print('Aqui estão as todas as cotações diárias em 5 anos.')
-        acao_i_hist = yf.download(acao_i, data_5, date.today())
+        data_ini = data_5
+        data_fim = date.today()
+        acao_i_hist = yf.download(acao_i, data_ini, data_fim)
         display(acao_i_hist)
         break
     elif tempo == 10:
         print('Aqui estão as todas as cotações diárias em 10 anos.')
-        acao_i_hist = yf.download(acao_i, data_10, date.today())
+        data_ini = data_10
+        data_fim = date.today()
+        acao_i_hist = yf.download(acao_i, data_ini, data_fim)
         display(acao_i_hist)
         break
     elif tempo == 200:
@@ -68,7 +76,14 @@ while True:
     else:
         print('Você digitou um tempo que não está na lista, por favor digite novamente.')
 
-acao_i_hist["Adj Close"].plot(figsize=(22,8))
+#Plotando Gráfico
+
+acao_i_hist["Adj Close"].plot(figsize=(13,5), c = 'purple', linewidth = 0.7)
+plt.legend([acao_i], loc = 'upper left')
+plt.ylabel('Cotação US$')
+plt.xlabel('Datas')
+plt.grid(True)
+plt.title(f'Cotação {acao_i} ao longo do Tempo ({data_ini} - {data_fim})')
 plt.show()
 
 data = pd.DataFrame(acao_i_hist)
